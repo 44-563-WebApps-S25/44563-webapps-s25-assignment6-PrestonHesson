@@ -39,5 +39,34 @@
             document.getElementById("result").innerHTML = `Correct: ${found} | Incorrect: ${oops}`;
         }
     </script>
+
+    <h2>Pet Image Switcher</h2>
+
+    <div>
+        <img id="petImage" src="otter.jpg" width="150" height="150" onclick="updatePic()">
+    </div>
+
+    <script>
+        let usePic = 1;
+
+        function updatePic() {
+            let img = document.getElementById("petImage");
+
+            switch (usePic) {
+                case 1: 
+                    img.src = "otter.jpg";
+                    usePic = 2;
+                    break;
+                case 2: 
+                    img.src = "husky.jpg";
+                    usePic = 3;
+                    break;
+                case 3: 
+                    img.src = "eagle.jpg";
+                    usePic = 1;
+                    break;
+            }
+        }
+    </script>
 </body>
 </html>
