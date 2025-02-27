@@ -21,30 +21,31 @@
 
     <script>
         function amounts() {
-            let basicPrice = parseFloat(document.getElementById("basicprice").value);
-            let breakAt = parseInt(document.getElementById("breakAt").value);
-            let discount = parseFloat(document.getElementById("discount").value);
+    let basicPrice = parseFloat(document.getElementById("basicprice").value); // Cost per letter
+    let breakAt = parseInt(document.getElementById("breakAt").value); // Discount threshold
+    let discount = parseFloat(document.getElementById("discount").value); // Discount percentage
 
-            let myResults = "";
+    let myResults = "";
 
-            // Looping from (breakAt - 3) to (breakAt + 3)
-            for (let size = breakAt - 3; size <= breakAt + 3; size++) {
-                let cost;
+    // Looping from (breakAt - 3) to (breakAt + 3)
+    for (let size = breakAt - 3; size <= breakAt + 3; size++) {
+        let cost = 0;
 
-                if (size < breakAt) {
-                    cost = size * basicPrice;  // Normal price per letter before breakAt
-                } else {
-                    let discountedLetters = size - breakAt;  
-                    let normalPrice = breakAt * basicPrice;
-                    let discountedPrice = discountedLetters * (basicPrice * (1 - discount / 100));
-                    cost = normalPrice + discountedPrice;
-                }
+        if (size < breakAt) {
+            cost = size * basicPrice; // Regular price per letter
+        } else {
+            let fullPriceLetters = breakAt; // First 'breakAt' letters cost full price
+            let discountedLetters = size - breakAt; // Extra letters get discounted price
+            let discountedRate = basicPrice * (1 - discount / 100); // Apply discount
 
-                myResults += `size ${size} is ${cost.toFixed(1)}; `;
-            }
-
-            document.getElementById("result").innerHTML = "Totals are: " + myResults;
+            cost = (fullPriceLetters * basicPrice) + (discountedLetters * discountedRate);
         }
+
+        myResults += `size ${size} is ${cost.toFixed(1)}; `;
+    }
+
+    document.getElementById("result").innerHTML = "Totals are: " + myResults;
+}
     </script>
 
 <h2>Select an Operation</h2>

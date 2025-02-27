@@ -1,31 +1,33 @@
 <!DOCTYPE html>
 <html>
- 
+
 <body>
 
     <h2>Update Dinner</h2>
 
-<form>
-    <label>Enter main dish:</label>
-    <input type="text" id="mainDish" value="Butter Chicken"> <br>
+    <form>
+        <label>Enter main dish:</label>
+        <input type="text" id="mainDish" value="Butter Chicken"> <br>
 
-    <label>Enter dessert:</label>
-    <input type="text" id="dessert" value=""> <br>
+        <label>Enter dessert:</label>
+        <input type="text" id="dessert" value=""> <br>
 
-    <button type="button" onclick="updateDinner()">Update the dinner</button>
-</form>
+        <button type="button" onclick="updateDinner()">Update the dinner</button>
+    </form>
 
-<p id="updatedDinnerResult">Updated dinner details will be displayed here.</p>
+    <p id="updatedDinnerResult">Updated dinner details will be displayed here.</p>
 
-<script>
-    function updateDinner() {
-        my_dinner.main = document.getElementById("mainDish").value;
-        my_dinner.dessert = document.getElementById("dessert").value;
+    <script>
+        // Initialize the global dinner object
+        let my_dinner = {};
 
-        document.getElementById("updatedDinnerResult").innerHTML = JSON.stringify(my_dinner);
-    }
-</script>
+        function updateDinner() {
+            my_dinner.main = document.getElementById("mainDish").value;
+            my_dinner.dessert = document.getElementById("dessert").value;
 
+            document.getElementById("updatedDinnerResult").innerHTML = JSON.stringify(my_dinner);
+        }
+    </script>
 
 </body>
-</html> 
+</html>
